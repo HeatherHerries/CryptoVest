@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://kit.fontawesome.com/c6a6c76434.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="CSS/lightbox.min.css">
   <link rel="stylesheet" href="CSS/utilities.css">
   <link rel="stylesheet" href="CSS/style.css">
   <title>Welcome To CryptoVest</title>
 </head>
 <body id="home">
   <header class="hero">
-    <div id="navbar" class="navbar">
+    <div id="navbar" class="navbar top">
       <h1 class="logo">
         <span class="text-primary"><i class="fa-solid fa-coins"></i> Crypto</span>Vest
       </h1>
@@ -90,24 +91,50 @@
       </header>
       <div class="row">
         <div class="column">
-          <img src="images/cases/cases1.jpg" alt="">
+          <a href="images/cases/cases1.jpg" data-lightbox="cases"
+          data-title="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, laborum?">
+            <img src="images/cases/cases1.jpg" alt="">
+          </a>
+          <a href="images/cases/cases2.jpg" data-lightbox="cases"
+          data-title="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, laborum?">
           <img src="images/cases/cases2.jpg" alt="">
+          </a>
         </div>
 
         <div class="column">
-            <img src="images/cases/cases3.jpg" alt="">
+            <a href="images/cases/cases3.jpg" data-lightbox="cases"
+            data-title="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, laborum?">
+              <img src="images/cases/cases3.jpg" alt="">
+            </a>
+            <a href="images/cases/cases4.jpg" data-lightbox="cases"
+            data-title="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, laborum?">
             <img src="images/cases/cases4.jpg" alt="">
+            </a>
           </div>
 
           <div class="column">
-              <img src="images/cases/cases5.jpg" alt="">
+              <a href="images/cases/cases5.jpg" data-lightbox="cases"
+              data-title="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, laborum?">
+                <img src="images/cases/cases5.jpg" alt="">
+              </a>
+              <a href="images/cases/cases6.jpg" data-lightbox="cases"
+              data-title="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, laborum?">
               <img src="images/cases/cases6.jpg" alt="">
+              </a>
             </div>
 
             <div class="column">
-                <img src="images/cases/cases7.jpg" alt="">
+                <a href="images/cases/cases7.jpg" data-lightbox="cases"
+                data-title="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, laborum?">
+                  <img src="images/cases/cases7.jpg" alt="">
+                </a>
+                <a href="images/cases/cases8.jpg" data-lightbox="cases"
+                data-title="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, laborum?">
                 <img src="images/cases/cases8.jpg" alt="">
+                </a>
               </div>
+
+        
       </div>
     </section>
 
@@ -124,7 +151,7 @@
               <h4>March 24, 2022</h4>
               <h2>Turn Your Crypto Into Cash</h2>
               <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore alias, aperiam magnam doloremque harum natus tempore ducimus porro ullam iste.</p>
-              <a href="#" class="btn btn-outline">Read Our Blog <i class="fa-solid fa-chevron-right"></i></a>
+              <a href="blog.html" class="btn btn-outline">Read Our Blog <i class="fa-solid fa-chevron-right"></i></a>
             </div>
           </div>
         </div>
@@ -201,5 +228,43 @@
     </div>
     <p>Copyright &copy; 2022 - CryptoVest</p>
   </footer>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="js/lightbox.min.js"></script>
+  <script>  
+    const navbar = document.getElementById('navbar');
+    let scrolled = false;
+
+    window.onscroll = function() {
+      if(window.pageYOffset > 100) {
+        navbar.classList.remove('top');
+        if(!scrolled) {
+            navbar.style.transform = 'translateY(-70px)';
+        }
+        setTimeout(function() {
+            navbar.style.transform = 'translateY(0)';
+            scrolled = true;
+        }, 200);
+      } else{
+          navbar.classList.add('top');
+          scrolled = false;
+      }
+    }
+
+    // Smooth Scrolling
+    $('#navbar a, .btn').on('click', function (e) {
+        if (this.hash !== '') {
+          e.preventDefault();
+
+          const hash = this.hash;
+
+          $('html, body').animate(
+            {
+              scrollTop: $(hash).offset().top - 100,
+            },
+            800
+          );
+        }
+      });
+  </script>
 </body>
 </html>
